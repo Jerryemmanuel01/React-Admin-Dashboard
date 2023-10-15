@@ -156,6 +156,9 @@ let users = [
 app.get("/api/users", (req, res) => {
   res.json(users);
 });
+app.get("/", (req, res) => {
+  res.json('connected sucessfully');
+});
 
 //GET USER
 app.get("/api/user/:id", (req, res) => {
