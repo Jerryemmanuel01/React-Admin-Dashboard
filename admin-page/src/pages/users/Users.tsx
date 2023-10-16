@@ -1,6 +1,6 @@
 import DataTable from "../../components/dataTable/DataTable";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+// import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
 import "./users.scss";
 import { GridColDef } from "@mui/x-data-grid";
 import Add from "../../components/add/Add";
@@ -54,16 +54,34 @@ const colums: GridColDef[] = [
   },
 ];
 
+const url = "https://react-admin-dashboard-servers.vercel.app/api/users";
+// const url = "http://localhost:8800/api/users";
+
 const Users = () => {
   const [open, setOpen] = useState(false);
 
-  const { isLoading, data } = useQuery({
-    queryKey: ["allusers"],
-    queryFn: () =>
-      fetch("https://react-admin-dashboard-servers.vercel.app/api/users").then(
-        (res) => res.json()
-      ),
-  });
+  const [data, setData] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
+
+  const getUsers = async () => {
+    const response = await fetch(url);
+    const users = await response.json();
+
+    setData(users)
+    setisLoading(false)
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  // const { isLoading, data } = useQuery({
+  //   queryKey: ["allusers"],
+  //   queryFn: () =>
+  //     fetch(url).then(
+  //       (res) => res.json()
+  //     ),
+  // });
 
   return (
     <div className="users">
