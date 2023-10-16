@@ -1,6 +1,5 @@
 import DataTable from "../../components/dataTable/DataTable";
 // import { useQuery } from "@tanstack/react-query";
-//  "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
 import { useState, useEffect } from "react";
 import "./users.scss";
 import { GridColDef } from "@mui/x-data-grid";
