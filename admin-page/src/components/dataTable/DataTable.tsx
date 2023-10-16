@@ -29,6 +29,7 @@ const DataTable = (props: Props) => {
   const handleDelete = (id: number) => {
     // delete an item
     mutation.mutate(id);
+    console.log(id + "working");
   };
 
   const actionColumn: GridColDef = {
