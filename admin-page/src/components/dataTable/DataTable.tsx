@@ -13,21 +13,23 @@ const DataTable = (props: Props) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (id:number) => {
-      return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
-        method: 'delete',
-      })
+    mutationFn: (id: number) => {
+      return fetch(
+        `https://react-admin-dashboard-servers.vercel.app/api/${props.slug}/${id}`,
+        {
+          method: "delete",
+        }
+      );
     },
     onSuccess: () => {
-      queryClient.invalidateQueries([`all${props.slug}`])
-    }
+      queryClient.invalidateQueries([`all${props.slug}`]);
+    },
   });
 
   const handleDelete = (id: number) => {
     // delete an item
-    mutation.mutate(id)
-    console.log(id + 'working');
-    
+    mutation.mutate(id);
+    console.log(id + "working");
   };
 
   const actionColumn: GridColDef = {

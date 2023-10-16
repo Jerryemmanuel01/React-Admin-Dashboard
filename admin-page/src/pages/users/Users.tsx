@@ -58,11 +58,11 @@ const Users = () => {
   const [open, setOpen] = useState(false);
 
   const { isLoading, data } = useQuery({
-    queryKey:["allusers"],
-    queryFn: () => 
-    fetch("http://localhost:8800/api/users").then(
-      (res) => res.json()
-    ),
+    queryKey: ["allusers"],
+    queryFn: () =>
+      fetch("https://react-admin-dashboard-servers.vercel.app/api/users").then(
+        (res) => res.json()
+      ),
   });
 
   return (
