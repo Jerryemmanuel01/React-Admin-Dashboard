@@ -1,7 +1,13 @@
+@import "../../styles/responsive.scss";
+
 .dataTable {
   .dataGrid {
     background: white;
     padding: 20px;
+
+    @include sm{
+      width: 100%;
+    }
 
     .MuiDataGrid-toolbarContainer {
       flex-direction: row-reverse;
